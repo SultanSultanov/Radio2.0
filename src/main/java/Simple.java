@@ -16,7 +16,7 @@ public class Simple extends JFrame {
     JPanel panel;
     boolean bool;
 
-    ExecutorService service = Executors.newCachedThreadPool();
+    ExecutorService service = Executors.newFixedThreadPool(1);
 
 
     public Simple() {
@@ -49,6 +49,7 @@ public class Simple extends JFrame {
 
                     }
                 };
+                service.shutdownNow();
                service.execute(runnable);
             }
         });

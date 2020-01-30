@@ -47,7 +47,8 @@ public class Simple extends JFrame {
                     public void run() {
                         System.out.println("SPB");
                         try {
-                            if (service.isTerminated()) service.shutdownNow();
+                            if (!service.isShutdown()) service.shutdownNow();
+
 
                             player = new Player(new BufferedInputStream(new URL("https://myradio24.org/2666").openStream()));
                         } catch (JavaLayerException | IOException e) {
@@ -79,7 +80,7 @@ public class Simple extends JFrame {
                         System.out.println("Retro");
 
                         try {
-                            if (service.isTerminated()) service.shutdownNow();
+                            if (!service.isShutdown()) service.shutdownNow();
 
                             player = new Player(new BufferedInputStream(new URL("https://myradio24.org/8144").openStream()));
                         } catch (JavaLayerException | IOException e) {

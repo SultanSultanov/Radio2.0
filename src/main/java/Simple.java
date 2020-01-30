@@ -1,4 +1,5 @@
 import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import java.awt.*;
@@ -13,6 +14,8 @@ import javax.swing.*;
 
 
 public class Simple extends JFrame {
+    Player player;
+    URL url;
     JPanel panel;
     boolean bool;
 
@@ -43,14 +46,27 @@ public class Simple extends JFrame {
                     @Override
                     public void run() {
                         System.out.println("SPB");
+                        try {
+                            if (service.isTerminated()) service.shutdownNow();
 
-                        Radio radio = new Radio();
-                        radio.radioPleer("https://myradio24.org/2666");
+                            player = new Player(new BufferedInputStream(new URL("https://myradio24.org/2666").openStream()));
+                        } catch (JavaLayerException | IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            player.play();
+                        } catch (JavaLayerException e) {
+                            e.printStackTrace();
+                        }
+
+
+//                        Radio radio = new Radio();
+//                        radio.radioPleer("https://myradio24.org/2666");
 
                     }
                 };
-                service.shutdownNow();
-               service.execute(runnable);
+
+                service.execute(runnable);
             }
         });
 
@@ -62,8 +78,21 @@ public class Simple extends JFrame {
                     public void run() {
                         System.out.println("Retro");
 
-                        Radio radio = new Radio();
-                        radio.radioPleer("https://myradio24.org/8144");
+                        try {
+                            if (service.isTerminated()) service.shutdownNow();
+
+                            player = new Player(new BufferedInputStream(new URL("https://myradio24.org/8144").openStream()));
+                        } catch (JavaLayerException | IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            player.play();
+                        } catch (JavaLayerException e) {
+                            e.printStackTrace();
+                        }
+
+//                        Radio radio = new Radio();
+//                        radio.radioPleer("https://myradio24.org/8144");
                     }
                 };
                 service.execute(runnable);

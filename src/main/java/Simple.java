@@ -19,7 +19,7 @@ public class Simple extends JFrame {
     JPanel panel;
     boolean bool;
 
-    ExecutorService service = Executors.newFixedThreadPool(1);
+    ExecutorService service = Executors.newFixedThreadPool(2);
 
 
     public Simple() {
@@ -47,7 +47,6 @@ public class Simple extends JFrame {
                     public void run() {
                         System.out.println("SPB");
                         try {
-                            if (!service.isShutdown()) service.shutdownNow();
 
 
                             player = new Player(new BufferedInputStream(new URL("https://myradio24.org/2666").openStream()));

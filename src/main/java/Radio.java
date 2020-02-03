@@ -1,4 +1,5 @@
 import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import java.io.BufferedInputStream;
@@ -12,9 +13,9 @@ public class Radio  {
 
 
         URL url;
-        AdvancedPlayer play = null;
+        Player play = null;
         try {
-            play = new AdvancedPlayer(new BufferedInputStream(new URL(s).openStream()));
+            play = new Player(new BufferedInputStream(new URL(s).openStream()));
         } catch (JavaLayerException | IOException e) {
             e.printStackTrace();
         }
@@ -25,6 +26,11 @@ public class Radio  {
         }
 
     }
+    public void radioPleerStop(){
+        Player player = null;
+        player.close();
+    }
+
 
 
 }

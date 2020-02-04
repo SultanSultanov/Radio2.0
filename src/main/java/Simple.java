@@ -16,7 +16,7 @@ public class Simple extends JFrame {
     URL url;
     JPanel panel;
     Player currentPlayer;
-    Font BigFontTR = new Font("TimesRoman", Font.BOLD, 22);
+    Font font = new Font("TimesNewRoman", Font.BOLD, 22);
 
 
     public Simple() {
@@ -26,29 +26,29 @@ public class Simple extends JFrame {
 
         panel.setLayout(new GridLayout(6, 1));
 
-        JButton button1 = new JButton("SPB");
+        JButton button1 = new JButton("Radio SPB");
         button1.setActionCommand("https://myradio24.org/2666");
-        button1.setFont(BigFontTR);
+        button1.setFont(font);
 
         JButton button2 = new JButton("Retro FM");
         button2.setActionCommand("https://myradio24.org/8144");
-        button2.setFont(BigFontTR);
+        button2.setFont(font);
 
-        JButton button3 = new JButton("Отличное Радио");
+        JButton button3 = new JButton("Great radio");
         button3.setActionCommand("https://myradio24.org/60403");
-        button3.setFont(BigFontTR);
+        button3.setFont(font);
 
         JButton button4 = new JButton("Radio Respect");
         button4.setActionCommand("https://myradio24.org/lucu666");
-        button4.setFont(BigFontTR);
+        button4.setFont(font);
 
         JButton button5 = new JButton("Radio-J");
         button5.setActionCommand("https://myradio24.org/evgewa");
-        button5.setFont(BigFontTR);
+        button5.setFont(font);
 
-        JButton button6 = new JButton("Галактика");
+        JButton button6 = new JButton("Radio Galactic");
         button6.setActionCommand("https://myradio24.org/11643");
-        button6.setFont(BigFontTR);
+        button6.setFont(font);
 
         panel.add(button1);
         panel.add(button2);

@@ -15,6 +15,7 @@ public class Main {
 
 //                }
 //            });
-//
+//        Fr fr = new Fr();
+//fr.setVisible(true);
     }
 }

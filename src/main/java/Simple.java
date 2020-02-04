@@ -5,6 +5,7 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +23,8 @@ public class Simple extends JFrame {
     Player player;
     URL url;
     JPanel panel;
-    boolean bool;
-    TestActionListener testActionListener;
-    ExecutorService service = Executors.newFixedThreadPool(1);
-
     Player currentPlayer;
+
 
 
     public Simple() {
@@ -35,7 +33,10 @@ public class Simple extends JFrame {
         setLocationByPlatform(true);
         JPanel panel = new JPanel();
 
-        panel.setFont(new Font("Arial", Font.PLAIN, 24));
+
+
+
+
 
 
         JButton button1 = new JButton("SPB");
@@ -55,70 +56,28 @@ public class Simple extends JFrame {
         button2.addActionListener(actionListener);
 
 
-//
-//        button1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//                Runnable runnable = new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        System.out.println("SPB");
-//                        try {
-//
-//
-//                            player = new Player(new BufferedInputStream(new URL("https://myradio24.org/2666").openStream()));
-//                        } catch (JavaLayerException | IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                        try {
-//                            player.play();
-//                        } catch (JavaLayerException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//
-////                        Radio radio = new Radio();
-////                        radio.radioPleer("https://myradio24.org/2666");
-//
-//                    }
-//                };
-//
-//                service.execute(runnable);
-//            }
-//        });
-//
-//        button2.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                Runnable runnable = new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        System.out.println("Retro");
-//
-//                        try {
-//                            if (!service.isShutdown()) service.shutdownNow();
-//
-//                            player = new Player(new BufferedInputStream(new URL("https://myradio24.org/8144").openStream()));
-//                        } catch (JavaLayerException | IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                        try {
-//                            player.play();
-//                        } catch (JavaLayerException e) {
-//                            e.printStackTrace();
-//                        }
-//
-////                        Radio radio = new Radio();
-////                        radio.radioPleer("https://myradio24.org/8144");
-//                    }
-//                };
-//                service.execute(runnable);
-//
-//            }
-//        });
+    }
+    public class Paint extends JPanel{
+
+        BufferedImage image;
+
+        public void paintComponent(Graphics g)
+        {
+            try {
+                image = ImageIO.read(new File("C:\\Users\\Султан\\Desktop\\Radio2.0\\src\\main\\resources\\145458292112119207.jpg"));
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+            g.drawImage(image, 0, 0, this);
+        }
 
     }
+
+
+
+
+
 
     class TestActionListener implements ActionListener {
 

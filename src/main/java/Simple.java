@@ -27,26 +27,41 @@ public class Simple extends JFrame {
 
 
 
+
     public Simple() {
-        super("Radio Online");
-        setSize(400, 300);
+        super("Radio");
+        setSize(600, 600);
         setLocationByPlatform(true);
         JPanel panel = new JPanel();
-
-
-
-
-
 
 
         JButton button1 = new JButton("SPB");
         button1.setActionCommand("https://myradio24.org/2666");
 
-        JButton button2 = new JButton("Retro");
+
+
+        JButton button2 = new JButton("Retro FM");
         button2.setActionCommand("https://myradio24.org/8144");
+
+
+
+        JButton button3 = new JButton("Отличное Радио");
+        button3.setActionCommand("https://myradio24.org/60403");
+
+
+        JButton button4 = new JButton("Radio Respect");
+        button4.setActionCommand("https://myradio24.org/lucu666");
+
+        JButton button5 = new JButton("Radio-J");
+        button5.setActionCommand("https://myradio24.org/evgewa");
+
 
         panel.add(button1);
         panel.add(button2);
+        panel.add(button3);
+        panel.add(button4);
+        panel.add(button5);
+
         add(panel);
 
 
@@ -54,91 +69,33 @@ public class Simple extends JFrame {
 
         button1.addActionListener(actionListener);
         button2.addActionListener(actionListener);
+        button3.addActionListener(actionListener);
+        button4.addActionListener(actionListener);
+        button5.addActionListener(actionListener);
 
 
     }
-    public class Paint extends JPanel{
-
-        BufferedImage image;
-
-        public void paintComponent(Graphics g)
-        {
-            try {
-                image = ImageIO.read(new File("C:\\Users\\Султан\\Desktop\\Radio2.0\\src\\main\\resources\\145458292112119207.jpg"));
-            } catch (IOException e) {
-
-                e.printStackTrace();
-            }
-            g.drawImage(image, 0, 0, this);
-        }
-
-    }
-
-
-
-
-
 
     class TestActionListener implements ActionListener {
 
 
         public void actionPerformed(ActionEvent e) {
-            if (currentPlayer != null){
+            if (currentPlayer != null) {
                 currentPlayer.close();
             }
-            new Thread(()->{
-                try{
+            new Thread(() -> {
+                try {
                     Player player = new Player(new BufferedInputStream(new URL(e.getActionCommand()).openStream()));
                     currentPlayer = player;
                     currentPlayer.play();
-                } catch (JavaLayerException | IOException ex){
+                } catch (JavaLayerException | IOException ex) {
                     ex.printStackTrace();
                 }
             }).start();
 
 
-
-
-        }
-    }
-
-    class Fr extends JFrame {
-        JLabel lbl;
-        JButton b;
-
-        public Fr() {
-            setTitle("Window");
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setBounds(100, 100, 500, 450);
-            setResizable(false);
-
-            setContentPane(new BgPanel());
-            Container cont = getContentPane();
-
-            lbl = new JLabel("Label");
-            lbl.setFont(new Font("Arial", Font.PLAIN, 24));
-            b = new JButton("Button");
-
-
-            cont.setLayout(new FlowLayout());
-            cont.add(lbl);
-            cont.add(b);
-
-        }
-    }
-
-    class BgPanel extends JPanel {
-        public void paintComponent(Graphics g) {
-            Image im = null;
-            try {
-                im = ImageIO.read(new File("C:\\Users\\Султан\\Desktop\\Radio2.0\\src\\main\\resources\\145458292112119207.jpg"));
-            } catch (IOException e) {
-            }
-            g.drawImage(im, 0, 0, null);
         }
     }
 
 
 }
-
-

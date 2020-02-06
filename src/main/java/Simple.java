@@ -25,6 +25,7 @@ public class Simple extends JFrame {
 
 
     public Simple() {
+        super("Online Radio");
         setLocationByPlatform(true);
         setBounds(700, 300, 300, 600);
         JPanel panel = new JPanel();
